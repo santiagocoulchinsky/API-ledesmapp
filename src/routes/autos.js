@@ -4,8 +4,8 @@ const _ = require('underscore');
 const fs = require('fs');
 
 
-/* const nuevoContenido = fs.readFileSync('src/sample.json', 'utf-8'); */
-const nuevoContenido = fs.readFileSync('https://ledesmapi.onrender.com/api/autos');
+const nuevoContenido = fs.readFileSync('src/sample.json', 'utf-8');
+
 
 let autos = JSON.parse(nuevoContenido);
 
@@ -44,9 +44,9 @@ router.delete('/:id', (req, res) => {
             fs.writeFileSync('src/sample.json', nuevoContenido, 'utf-8');
             res.json(nuevoContenido);
 
-        }else{
+        }/* else{
             res.send('Wrong request');
-        }
+        } */
     });
     
 });
