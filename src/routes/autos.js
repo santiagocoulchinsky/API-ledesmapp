@@ -3,7 +3,10 @@ const router = Router();
 const _ = require('underscore');
 const fs = require('fs');
 
-const nuevoContenido = fs.readFileSync('src/sample.json', 'utf-8');
+const url = 'https://ledesmapi.onrender.com/api/autos'
+
+/* const nuevoContenido = fs.readFileSync('src/sample.json', 'utf-8'); */
+const nuevoContenido = fs.readFileSync(url, 'utf-8');
 let autos = JSON.parse(nuevoContenido);
 
 
@@ -22,6 +25,7 @@ router.post('/', (req, res) => {
         
         const nuevoContenido = JSON.stringify(autos);
         fs.writeFileSync('src/sample.json', nuevoContenido, 'utf-8');
+        /* fs.writeFileSync(url, nuevoContenido, 'utf-8'); */
         res.json(nuevoContenido);
         
         
@@ -39,6 +43,7 @@ router.delete('/:id', (req, res) => {
 
             const nuevoContenido = JSON.stringify(autos);
             fs.writeFileSync('src/sample.json', nuevoContenido, 'utf-8');
+            /* fs.writeFileSync(url, nuevoContenido, 'utf-8'); */
             res.json(nuevoContenido);
 
         }/* else{
@@ -60,6 +65,7 @@ router.put('/:id', (req, res) => {
 
                 const nuevoContenido = JSON.stringify(autos);
                 fs.writeFileSync('src/sample.json', nuevoContenido, 'utf-8');
+                /* fs.writeFileSync(url, nuevoContenido, 'utf-8'); */
                 res.json(nuevoContenido);
             }
         });
