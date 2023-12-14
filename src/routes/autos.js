@@ -3,30 +3,36 @@ const router = Router();
 const _ = require('underscore');
 const fs = require('fs');
 
-/* const url = 'https://ledesmapi.onrender.com/api/autos' */
+const url = 'https://ledesmapi.onrender.com/api/autos';
 
 const nuevoContenido = fs.readFileSync('src/sample.json', 'utf-8');
-/* const nuevoContenido = fs.readFileSync(url, 'utf-8'); */
+const lista = fs.readFileSync(url, 'utf-8');
 let autos = JSON.parse(nuevoContenido);
+let prod = JSON.parse(lista);
 
 
 router.get('/', (req,res) => {
-    res.json(autos);
+    /* res.json(autos); */
+    res.json(prod);
 });
 
 
 router.post('/', (req, res) => {
     const {pos, carro, stock} = req.body;
     if (pos && carro && stock){
-        const id = autos.length +1;
+        /* const id = autos.length +1; */
+        const id = prod.length +1;
         const newAuto = {...req.body, id};
         
-        autos.push(newAuto);
+        /* autos.push(newAuto); */
+        prod.push(newAuto);
         
-        const nuevoContenido = JSON.stringify(autos);
+        /* const nuevoContenido = JSON.stringify(autos); */
+        const nuevoContenido = JSON.stringify(prod);
         fs.writeFileSync('src/sample.json', nuevoContenido, 'utf-8');
-        /* fs.writeFileSync(url, nuevoContenido, 'utf-8'); */
-        res.json(nuevoContenido);
+        fs.writeFileSync('src/sample.json', lista, 'utf-8');
+        /* res.json(nuevoContenido); */
+        res.json(lista);
         
         
     } else{
