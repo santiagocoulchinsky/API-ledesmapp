@@ -7,7 +7,7 @@ const url = 'https://ledesmapi.onrender.com/api/autos';
 
 /* const nuevoContenido = fs.readFileSync('src/sample.json', 'utf-8'); */
 const lista = fs.readFileSync(url, 'utf-8');
-let autos = JSON.parse(nuevoContenido);
+/* let autos = JSON.parse(nuevoContenido); */
 let prod = JSON.parse(lista);
 
 
@@ -30,9 +30,9 @@ router.post('/', (req, res) => {
         /* const nuevoContenido = JSON.stringify(autos); */
         const nuevoContenido = JSON.stringify(prod);
         fs.writeFileSync('src/sample.json', nuevoContenido, 'utf-8');
-        fs.writeFileSync('src/sample.json', lista, 'utf-8');
-        /* res.json(nuevoContenido); */
-        res.json(lista);
+        /* fs.writeFileSync('src/sample.json', lista, 'utf-8'); */
+        res.json(nuevoContenido);
+        /* res.json(lista); */
         
         
     } else{
