@@ -27,10 +27,10 @@ https.get(url, (response) => {
 });
 
 
-/* const nuevoContenido = fs.readFileSync(url, 'utf-8'); */
+const nuevoContenido = fs.readFileSync('src/sample.json', 'utf-8');
 
 
-let autos = JSON.parse(data);
+let autos = JSON.parse(nuevoContenido);
 
 
 
