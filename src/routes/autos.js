@@ -17,10 +17,10 @@ https.get(url, (response) => {
 
   response.on('end', () => {
     // Ahora `data` contiene el contenido del archivo desde la URL
-    fs.writeFileSync('src/sample.json', nuevoContenido);
+    fs.writeFileSync('src/sample.json', data);
     
     // Puedes leer el archivo local si es necesario
-    const nuevoContenido = fs.readFileSync('src/sample.json', 'utf-8');
+    const contenido = fs.readFileSync('src/sample.json', 'utf-8');
     console.log(contenido);
   });
 }).on('error', (error) => {
@@ -28,10 +28,10 @@ https.get(url, (response) => {
 });
 
 
-const nuevoContenido = fs.readFileSync(url, 'utf-8');
+/* const nuevoContenido = fs.readFileSync(url, 'utf-8'); */
 
 
-let autos = JSON.parse(nuevoContenido);
+let autos = JSON.parse(contenido);
 
 
 
