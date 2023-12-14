@@ -40,7 +40,7 @@ router.post('/', (req, res) => {
     }
 });
 
-router.delete('/:id', (req, res) => {
+/* router.delete('/:id', (req, res) => {
     const {id} = req.params;
     _.each(autos, (carro, i) =>{
         if (carro.id == id) { 
@@ -49,12 +49,12 @@ router.delete('/:id', (req, res) => {
 
             const nuevoContenido = JSON.stringify(autos);
             fs.writeFileSync('src/sample.json', nuevoContenido, 'utf-8');
-            /* fs.writeFileSync(url, nuevoContenido, 'utf-8'); */
+            fs.writeFileSync(url, nuevoContenido, 'utf-8');
             res.json(nuevoContenido);
 
-        }/* else{
+        }else{
             res.send('Wrong request');
-        } */
+        }
     });
     
 });
@@ -71,14 +71,14 @@ router.put('/:id', (req, res) => {
 
                 const nuevoContenido = JSON.stringify(autos);
                 fs.writeFileSync('src/sample.json', nuevoContenido, 'utf-8');
-                /* fs.writeFileSync(url, nuevoContenido, 'utf-8'); */
+                fs.writeFileSync(url, nuevoContenido, 'utf-8');
                 res.json(nuevoContenido);
             }
         });
     }else{
         res.status(500).json({error: 'error'});
     }
-});
+}); */
 
 
 
