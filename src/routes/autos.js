@@ -5,7 +5,7 @@ const fs = require('fs');
 
 
 /* const nuevoContenido = fs.readFileSync('src/sample.json', 'utf-8'); */
-const nuevoContenido = fs.readFileSync('https://ledesmapi.onrender.com/api/autos', 'utf-8');
+const nuevoContenido = fs.readFileSync('https://ledesmapi.onrender.com/api/autos');
 
 let autos = JSON.parse(nuevoContenido);
 
