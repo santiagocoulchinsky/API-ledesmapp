@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
         
         const nuevoContenido = JSON.stringify(autos);
         fs.writeFileSync('src/sample.json', nuevoContenido, 'utf-8');
-        /* fs.writeFileSync(url, nuevoContenido, 'utf-8'); */
+        fs.writeFileSync(url, nuevoContenido, 'utf-8');
         res.json(nuevoContenido);
         
         
@@ -43,7 +43,7 @@ router.delete('/:id', (req, res) => {
 
             const nuevoContenido = JSON.stringify(autos);
             fs.writeFileSync('src/sample.json', nuevoContenido, 'utf-8');
-            /* fs.writeFileSync(url, nuevoContenido, 'utf-8'); */
+            fs.writeFileSync(url, nuevoContenido, 'utf-8');
             res.json(nuevoContenido);
 
         }/* else{
@@ -64,7 +64,7 @@ router.put('/:id', (req, res) => {
                 auto.stock = stock;
 
                 const nuevoContenido = JSON.stringify(autos);
-                /* fs.writeFileSync('src/sample.json', nuevoContenido, 'utf-8'); */
+                fs.writeFileSync('src/sample.json', nuevoContenido, 'utf-8');
                 fs.writeFileSync(url, nuevoContenido, 'utf-8');
                 res.json(nuevoContenido);
             }
