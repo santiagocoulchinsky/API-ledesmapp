@@ -19,19 +19,18 @@ https.get(url, (response) => {
     // Ahora `data` contiene el contenido del archivo desde la URL
     fs.writeFileSync('src/sample.json', data);
     
-    // Puedes leer el archivo local si es necesario
+    /* // Puedes leer el archivo local si es necesario
     const contenido = fs.readFileSync('src/sample.json', 'utf-8');
-    console.log(contenido);
+    console.log(contenido); */
   });
-}).on('error', (error) => {
-  console.error(`Error al descargar el archivo desde la URL: ${error.message}`);
+
 });
 
 
 /* const nuevoContenido = fs.readFileSync(url, 'utf-8'); */
 
 
-let autos = JSON.parse(contenido);
+let autos = JSON.parse(data);
 
 
 
