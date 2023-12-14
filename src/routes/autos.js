@@ -17,7 +17,7 @@ https.get(url, (response) => {
 
   response.on('end', () => {
     // Ahora `data` contiene el contenido del archivo desde la URL
-    fs.writeFileSync('src/sample.json', data);
+    fs.writeFileSync('src/sample.json', data, 'utf-8');
     
     /* // Puedes leer el archivo local si es necesario
     const contenido = fs.readFileSync('src/sample.json', 'utf-8');
@@ -27,7 +27,7 @@ https.get(url, (response) => {
 });
 
 
-const nuevoContenido = fs.readFileSync('src/sample.json', 'utf-8');
+const nuevoContenido = data;
 
 
 let autos = JSON.parse(nuevoContenido);
