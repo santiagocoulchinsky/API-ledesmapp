@@ -4,7 +4,29 @@ const _ = require('underscore');
 const fs = require('fs');
 
 const https = require('https');
+
+
 const url = 'https://ledesmapi.onrender.com/api/autos';
+
+https.get(url, (response) => {
+  let data = '';
+
+  response.on('data', (chunk) => {
+    data += chunk;
+  });
+
+  response.on('end', () => {
+    // Ahora `data` contiene el contenido del archivo desde la URL
+    fs.writeFileSync('src/sample.json', data);
+    
+    // Puedes leer el archivo local si es necesario
+    const contenido = fs.readFileSync('src/sample.json', 'utf-8');
+    console.log(contenido);
+  });
+}).on('error', (error) => {
+  console.error(`Error al descargar el archivo desde la URL: ${error.message}`);
+});
+
 
 const nuevoContenido = fs.readFileSync(url, 'utf-8');
 
