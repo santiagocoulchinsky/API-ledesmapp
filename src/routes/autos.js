@@ -3,36 +3,28 @@ const router = Router();
 const _ = require('underscore');
 const fs = require('fs');
 
-const url = 'https://ledesmapi.onrender.com/api/autos';
 
-/* const nuevoContenido = fs.readFileSync('src/sample.json', 'utf-8'); */
-const lista = fs.readFileSync(url, 'utf-8');
-/* let autos = JSON.parse(nuevoContenido); */
-let prod = JSON.parse(lista);
+const nuevoContenido = fs.readFileSync('src/sample.json', 'utf-8');
+
+let autos = JSON.parse(nuevoContenido);
+
 
 
 router.get('/', (req,res) => {
-    /* res.json(autos); */
-    res.json(prod);
+    res.json(autos);
 });
 
 
 router.post('/', (req, res) => {
     const {pos, carro, stock} = req.body;
     if (pos && carro && stock){
-        /* const id = autos.length +1; */
-        const id = prod.length +1;
+        const id = autos.length +1;
         const newAuto = {...req.body, id};
+        autos.push(newAuto);
         
-        /* autos.push(newAuto); */
-        prod.push(newAuto);
-        
-        /* const nuevoContenido = JSON.stringify(autos); */
-        const nuevoContenido = JSON.stringify(prod);
+        const nuevoContenido = JSON.stringify(autos);
         fs.writeFileSync('src/sample.json', nuevoContenido, 'utf-8');
-        /* fs.writeFileSync('src/sample.json', lista, 'utf-8'); */
         res.json(nuevoContenido);
-        /* res.json(lista); */
         
         
     } else{
@@ -40,7 +32,7 @@ router.post('/', (req, res) => {
     }
 });
 
-/* router.delete('/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     const {id} = req.params;
     _.each(autos, (carro, i) =>{
         if (carro.id == id) { 
@@ -49,7 +41,6 @@ router.post('/', (req, res) => {
 
             const nuevoContenido = JSON.stringify(autos);
             fs.writeFileSync('src/sample.json', nuevoContenido, 'utf-8');
-            fs.writeFileSync(url, nuevoContenido, 'utf-8');
             res.json(nuevoContenido);
 
         }else{
@@ -71,14 +62,13 @@ router.put('/:id', (req, res) => {
 
                 const nuevoContenido = JSON.stringify(autos);
                 fs.writeFileSync('src/sample.json', nuevoContenido, 'utf-8');
-                fs.writeFileSync(url, nuevoContenido, 'utf-8');
                 res.json(nuevoContenido);
             }
         });
     }else{
         res.status(500).json({error: 'error'});
     }
-}); */
+});
 
 
 
