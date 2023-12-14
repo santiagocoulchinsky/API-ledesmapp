@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
         
         const nuevoContenido = JSON.stringify(autos);
         fs.writeFileSync('src/sample.json', nuevoContenido, 'utf-8');
-        fs.writeFileSync(url, nuevoContenido, 'utf-8');
+        fs.writeFileSync(url, autos, 'utf-8');
         res.json(nuevoContenido);
         
         
