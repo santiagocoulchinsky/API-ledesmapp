@@ -7,9 +7,10 @@ const https = require('https');
 
 
 const url = 'https://ledesmapi.onrender.com/api/autos';
+let data = '';
 
 https.get(url, (response) => {
-  let data = '';
+  
 
   response.on('data', (chunk) => {
     data += chunk;
@@ -17,12 +18,12 @@ https.get(url, (response) => {
 
   response.on('end', () => {
     // Ahora `data` contiene el contenido del archivo desde la URL
-    fs.writeFileSync('src/sample.json', data, 'utf-8');
+    fs.writeFileSync('src/sample.json', data);
     
     
     // Puedes leer el archivo local si es necesario
-    const contenido = fs.readFileSync('src/sample.json', 'utf-8');
-    console.log(contenido);
+    /* const contenido = fs.readFileSync('src/sample.json', 'utf-8');
+    console.log(contenido); */
   });
 
 });
